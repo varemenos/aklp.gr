@@ -9,8 +9,9 @@ marked.setOptions({
 	// highlight: function (code) { return highlight.highlightAuto(code).value; }
 });
 
-var header = fs.readFileSync('./templates/header.jade', 'utf8');
+var layout = fs.readFileSync('./templates/layout.jade', 'utf8');
 
-var result = jade.render(header, {});
+var result = jade.render(layout, {
+});
 
 console.log(result);
