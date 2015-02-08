@@ -2,9 +2,9 @@ doctype html
 html(lang="en")
     meta(charset="utf-8")
     meta(http-equiv="X-UA-Compatible", content="IE=edge")
-    meta(name="description", content="")
-    meta(name="keywords", content="")
-    meta(name="author", content="")
+    meta(name="description", content="#{description}")
+    meta(name="keywords", content="#{keywords}")
+    meta(name="author", content="#{author}")
     meta(name="viewport", content="width=device-width, initial-scale=1")
     link(rel="apple-touch-icon", href="apple-touch-icon.png")
     title
@@ -12,8 +12,7 @@ html(lang="en")
     style.
         header a { color: #fff; text-decoration: none; }
     link(rel='stylesheet', href='/css/style.css')
-    body#top
-        #wrap
-            block header
-            block content
-            block footer
+    body
+        block header
+        block content
+        block footer
