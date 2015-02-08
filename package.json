@@ -1,0 +1,15 @@
+{
+  "name": "blog",
+  "version": "0.0.0",
+  "description": "aklp.gr blog",
+  "main": "generate.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Adonis K. <aklp08@gmail.com> (http://adonisk.com/)",
+  "license": "MIT",
+  "dependencies": {
+    "marked": "~0.3.3",
+    "jade": "~1.9.2"
+  }
+}
