@@ -12,6 +12,9 @@ marked.setOptions({
 var layout = fs.readFileSync('./templates/layout.jade', 'utf8');
 
 var result = jade.render(layout, {
+    keywords: 'a, b, c',
+    author: 'Adonis K.',
+    description: ''
 });
 
 console.log(result);
