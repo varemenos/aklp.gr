@@ -1,3 +1,5 @@
+#!/usr/local/bin/node
+
 var marked = require('marked');
 var jade = require('jade');
 var fs = require('fs');
