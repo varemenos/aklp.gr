@@ -64,8 +64,8 @@ exports.getContent = function (posts) {
     return new BPromise(function (resolve, reject) {
         try{
             posts.forEach(function (post) {
-                var postData = fs.readFileSync(config.posts.path + post.filename + config.posts.extension, 'utf8');
-                post.data = postData;
+                var postContent = fs.readFileSync(config.posts.path + post.filename + config.posts.extension, 'utf8');
+                post.content = postContent;
             });
 
             resolve(posts);
@@ -81,7 +81,7 @@ exports.getTitles = function (posts) {
     return new BPromise(function (resolve, reject) {
         try {
             posts.forEach(function (post) {
-                var tokens = marked.lexer(post.data);
+                var tokens = marked.lexer(post.content);
 
                 tokens.forEach(function (token) {
                     if (token.type === 'heading' && token.depth === 1) {
@@ -108,7 +108,7 @@ exports.applyLayout = function (posts) {
                 categories: post.categories,
                 title: config.title + ' | ' + post.title,
                 description: '',
-                post: marked(post.data)
+                post: marked(post.content)
             });
 
             post.rendered = result;
