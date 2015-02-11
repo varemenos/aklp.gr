@@ -16,20 +16,6 @@ exports.generate = function () {
     });
 };
 
-exports.getDates = function () {
-    'use strict';
-
-    return new BPromise(function (resolve, reject) {
-        try{
-            var dates = fs.readdirSync(config.posts.path);
-
-            resolve(dates);
-        } catch (err) {
-            reject(err);
-        }
-    });
-};
-
 exports.getPosts = function () {
     'use strict';
 
