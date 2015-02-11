@@ -122,13 +122,13 @@ exports.build = function (posts) {
     'use strict';
 
     return new BPromise(function (resolve, reject) {
-        rmdir.sync(config.posts.dist);
-        fs.mkdirSync(config.posts.dist);
-        fs.mkdirSync(config.posts.dist + 'posts/');
+        rmdir.sync(config.dist);
+        fs.mkdirSync(config.dist);
+        fs.mkdirSync(config.dist + 'posts/');
 
         posts.forEach(function (post) {
             try {
-                var path = config.posts.dist + 'posts/' + post.filename + '.html';
+                var path = config.dist + 'posts/' + post.filename + '.html';
                 fs.writeFileSync(path, post.rendered, 'utf8');
             } catch(err) {
                 reject(err);

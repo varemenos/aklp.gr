@@ -1,8 +1,8 @@
 {
     "title": "AKLP.gr",
+    "dist": "./build/",
     "posts": {
         "path": "./posts/",
-        "dist": "./build/",
         "extension": ".md"
     }
 }
