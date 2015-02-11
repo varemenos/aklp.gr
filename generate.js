@@ -1,7 +1,6 @@
 #!/usr/local/bin/node
 
 var marked = require('marked');
-var fs = require('fs');
 var posts = require('./modules/posts');
 
 marked.setOptions({
