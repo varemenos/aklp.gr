@@ -10,7 +10,7 @@ marked.setOptions({
 });
 
 posts.generate(config.posts.path)
-    .then(posts.getDates)
+    .then(posts.getPosts)
     .then(posts.getMetadata)
     .then(posts.getContent)
     .then(posts.getTitles)

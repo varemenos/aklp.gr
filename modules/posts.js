@@ -1,6 +1,7 @@
 var exports = module.exports = {};
 
 var marked = require('marked');
+var _ = require('underscore');
 var jade = require('jade');
 var fs = require('fs');
 var rmdir = require('rimraf');
@@ -29,25 +30,39 @@ exports.getDates = function () {
     });
 };
 
-exports.getMetadata = function (dates) {
+exports.getPosts = function () {
     'use strict';
 
     return new BPromise(function (resolve, reject) {
         try{
             var posts = [];
+            var directory = fs.readdirSync(config.posts.path);
 
-            dates.forEach(function (date) {
-                var directory = fs.readdirSync(config.posts.path + date);
+            directory.forEach(function (file) {
+                if (file.substr(-config.posts.extension.length) === config.posts.extension) {
+                    posts.push({
+                        filename: file.replace(config.posts.extension, '')
+                    });
+                }
+            });
 
-                directory.forEach(function (file) {
-                    if (file.substr(-config.posts.extension.length) === config.posts.extension) {
-                        posts.push({
-                            filename: file.replace(config.posts.extension, ''),
-                            date: date,
-                            extension: config.posts.extension
-                        });
-                    }
-                });
+            resolve(posts);
+        } catch (err) {
+            reject(err);
+        }
+    });
+};
+
+exports.getMetadata = function (posts) {
+    'use strict';
+
+    return new BPromise(function (resolve, reject) {
+        try{
+
+            posts.forEach(function (post) {
+                var metadata = JSON.parse(fs.readFileSync(config.posts.path + post.filename + '.json', 'utf8'));
+                metadata.extension = config.posts.extension;
+                post = _.extend(post, metadata);
             });
 
             resolve(posts);
@@ -63,7 +78,7 @@ exports.getContent = function (posts) {
     return new BPromise(function (resolve, reject) {
         try{
             posts.forEach(function (post) {
-                var postData = fs.readFileSync(config.posts.path + post.date + '/' + post.filename + config.posts.extension, 'utf8');
+                var postData = fs.readFileSync(config.posts.path + post.filename + config.posts.extension, 'utf8');
                 post.data = postData;
             });
 
@@ -102,8 +117,9 @@ exports.applyLayout = function (posts) {
     return new BPromise(function (resolve, reject) {
         posts.forEach(function (post) {
             var result = jade.renderFile('./templates/post.jade', {
-                keywords: 'a, b, c',
-                author: 'Adonis K.',
+                keywords: post.keywords.join(' '),
+                author: post.author,
+                categories: post.categories,
                 title: config.title + ' | ' + post.title,
                 description: '',
                 post: marked(post.data)

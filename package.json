@@ -12,6 +12,7 @@
     "marked": "~0.3.3",
     "jade": "~1.9.2",
     "bluebird": "~2.9.8",
-    "rimraf": "~2.2.8"
+    "rimraf": "~2.2.8",
+    "underscore": "~1.7.0"
   }
 }
