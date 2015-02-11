@@ -1,5 +1,5 @@
 {
-    "fileExtensions": [".js", "jscs", ".json"],
+    "fileExtensions": [".js", "jscs"],
     "excludeFiles": ["assets/js/libs/**"],
     "requireParenthesesAroundIIFE": true,
     "validateLineBreaks": "LF",
