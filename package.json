@@ -8,11 +8,16 @@
   },
   "author": "Adonis K. <aklp08@gmail.com> (http://adonisk.com/)",
   "license": "MIT",
-  "dependencies": {
+  "devDependencies": {
     "marked": "~0.3.3",
     "jade": "~1.9.2",
     "bluebird": "~2.9.8",
     "rimraf": "~2.2.8",
-    "underscore": "~1.7.0"
+    "underscore": "~1.7.0",
+    "grunt": "~0.4.5",
+    "grunt-contrib-watch": "~0.6.1",
+    "load-grunt-tasks": "~3.1.0",
+    "grunt-shell": "~1.1.2",
+    "grunt-contrib-clean": "~0.6.0"
   }
 }

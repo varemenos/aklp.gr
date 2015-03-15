@@ -1,0 +1,10 @@
+extends ../layout
+block header
+block content
+    ul
+        each post in posts
+            li
+                a(href="#{post}")
+                    | #{post}
+block footer
+    | copyright AKLP.gr &copy; #{new Date().getFullYear()}

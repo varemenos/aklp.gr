@@ -1,16 +1,22 @@
 #!/usr/local/bin/node
 
+var fs = require('fs');
 var marked = require('marked');
-var posts = require('./modules/posts');
+
+var data = require('./modules/data');
+var posts = require('./modules/posts/build');
 
 marked.setOptions({
-	renderer: new marked.Renderer()
+    renderer: new marked.Renderer()
 });
 
-posts.generate()
-    .then(posts.getPosts)
-    .then(posts.getMetadata)
-    .then(posts.getContent)
-    .then(posts.getTitles)
-    .then(posts.applyLayout)
-    .then(posts.build);
+var generate = function () {
+    'use strict';
+
+    var config = JSON.parse(fs.readFileSync('./config.json', 'utf8'));
+
+    data(config);
+    posts(config);
+};
+
+generate();
