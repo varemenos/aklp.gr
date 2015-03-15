@@ -9,7 +9,7 @@ body{
     max-width: 960px;
     margin-left: auto;
     margin-right: auto;
-    padding-bottom: 1.25rem;
+    padding: 1.25rem 0;
 }
 
 article.post{
@@ -32,7 +32,9 @@ article.post{
 }
 
 .post_title{
+    line-height: 1;
     margin-top: 0;
+    margin-bottom: 1.25rem;
 
     a{
         display: block;
@@ -61,6 +63,49 @@ article.post{
     color: #fff;
     border-radius: 3px;
     text-decoration: none;
+}
+
+header{
+    display: flex;
+    margin: 0;
+    margin-bottom: 1.25rem;
+
+    #brand{
+        margin: 0;
+        margin-right: 1.25rem;
+
+        a{
+            display: block;
+            height: 4rem;
+
+            img{
+                height: 100%;
+            }
+        }
+    }
+
+    .brand_title{
+        display: none;
+    }
+
+    nav{
+        flex: 1;
+        padding: 1.25rem;
+        text-align: right;
+        background-color: #fff;
+
+        a{
+            display: inline-block;
+            margin-left: 1.25rem;
+            color: #333;
+            text-decoration: none;
+
+            &:focus,
+            &:hover{
+                text-decoration: underline;
+            }
+        }
+    }
 }
 
 footer{

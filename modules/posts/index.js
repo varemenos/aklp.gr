@@ -7,7 +7,8 @@ var index = function (config) {
 
     var build = function (posts) {
         var indexContent = jade.renderFile('./templates/posts/index.jade', {
-            posts: posts
+            posts: posts,
+            title: config.title
         });
 
         fs.writeFileSync(path.resolve(config.pwd + config.dist + config.path.posts + '/index.html'), indexContent, 'utf8');

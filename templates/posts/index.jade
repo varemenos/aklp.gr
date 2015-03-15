@@ -1,7 +1,20 @@
 extends ../layout
 block header
-    h1
-        | #{title}
+    header
+        h1#brand
+            a(href="http://aklp.gr/")
+                span.brand_title
+                    | AKLP.gr
+                img(src="http://aklp.gr/templates/aklpgr/assets/img/logo.jpg", alt="AKLP.gr")
+        nav
+            a(href="/")
+                | Home
+            a(href="/categories")
+                | Categories
+                //- each category in categories
+                //-     #{category}
+            a(href="/posts")
+                | Archive
 block content
     .posts.index
         each post in posts
