@@ -8,9 +8,13 @@ var posts = function (config) {
     'use strict';
 
     function buildPath () {
-        rmdir.sync(config.pwd + config.dist);
-        fs.mkdirSync(config.pwd + config.dist);
-        fs.mkdirSync(config.pwd + config.dist + config.path.posts);
+        try {
+            rmdir.sync(config.pwd + config.dist);
+            fs.mkdirSync(config.pwd + config.dist);
+            fs.mkdirSync(config.pwd + config.dist + config.path.posts);
+        } catch (e) {
+            throw e;
+        }
     }
 
     buildPath();
