@@ -1,4 +1,5 @@
 var fs = require('fs');
+var path = require('path');
 var _ = require('underscore');
 var marked = require('marked');
 
@@ -7,7 +8,7 @@ var getPosts = function (config) {
 
     config.posts = [];
 
-    var directory = fs.readdirSync(config.path.posts);
+    var directory = fs.readdirSync(path.resolve(config.pwd + config.path.posts));
 
     directory.forEach(function (file) {
         var filetype = file.substr(-('.md').length);
@@ -19,14 +20,14 @@ var getPosts = function (config) {
         }
     });
 
-    console.log('  ✔ posts loaded');
+    console.log('  ✔ posts loaded [ ' + config.posts.length + ' ]');
 };
 
 var getMetadata = function (config) {
     'use strict';
 
     config.posts.forEach(function (post) {
-        var metadataFile = fs.readFileSync(config.path.posts + post.filename + '.json', 'utf8');
+        var metadataFile = fs.readFileSync(path.resolve(config.pwd + config.path.posts + post.filename + '.json'), 'utf8');
 
         var metadata = JSON.parse(metadataFile);
 
@@ -34,18 +35,18 @@ var getMetadata = function (config) {
         post = _.extend(post, metadata);
     });
 
-    console.log('  ✔ metadata loaded');
+    console.log('  ✔ metadata loaded [ ' + config.posts.length + ' ]');
 };
 
 var getContent = function (config) {
     'use strict';
 
     config.posts.forEach(function (post) {
-        var postContent = fs.readFileSync(config.path.posts + post.filename + post.extension, 'utf8');
+        var postContent = fs.readFileSync(config.pwd + config.path.posts + post.filename + post.extension, 'utf8');
         post.content = postContent;
     });
 
-    console.log('  ✔ content loaded');
+    console.log('  ✔ content loaded [ ' + config.posts.length + ' ]');
 };
 
 var getTitles = function (config) {
@@ -61,7 +62,7 @@ var getTitles = function (config) {
         });
     });
 
-    console.log('  ✔ titles loaded');
+    console.log('  ✔ titles loaded [ ' + config.posts.length + ' ]');
 };
 
 var getCategories = function (config) {
@@ -76,10 +77,10 @@ var getCategories = function (config) {
 
     config.categories = _.uniq(categories);
 
-    console.log('  ✔ categories loaded');
+    console.log('  ✔ categories loaded [ ' + config.posts.length + ' ]');
 };
 
-var generateData = function (config) {
+var data = function (config) {
     'use strict';
 
     getPosts(config);
@@ -89,4 +90,4 @@ var generateData = function (config) {
     getCategories(config);
 };
 
-exports = module.exports = generateData;
+exports = module.exports = data;

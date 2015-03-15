@@ -11,9 +11,10 @@ module.exports = function (grunt) {
                 files: [
                     'templates/**/*',
                     'modules/**/*',
+                    'config.json',
                     'generate.js'
                 ],
-                tasks: ['clean:dist', 'shell:generate']
+                tasks: ['shell:generate']
             },
             config: {
                 options: {
