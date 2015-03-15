@@ -14,7 +14,7 @@ marked.setOptions({
 var generate = function () {
     'use strict';
 
-    var config = JSON.parse(fs.readFileSync('./config.json', 'utf8'));
+    var config = JSON.parse(fs.readFileSync(path.resolve(__dirname + '/config.json'), 'utf8'));
     config.pwd = path.resolve(__dirname);
 
     data(config);
