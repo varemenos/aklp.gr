@@ -1,10 +1,27 @@
 extends ../layout
 block header
+    h1
+        | #{title}
 block content
-    ul
+    .posts.index
         each post in posts
-            li
-                a(href="#{post}")
-                    | #{post}
-block footer
-    | copyright AKLP.gr &copy; #{new Date().getFullYear()}
+            article.post
+                img.post_image(src="#{post.image}")
+                section.post_content
+                    h2.post_title
+                        a(href="#{post.path}")
+                            | #{post.title}
+                    if post.description
+                        p
+                            | #{post.description}
+                    .post_metadata
+                        p
+                            | Author: #{post.author}
+                        p
+                            | Date: #{post.date}
+                        p
+                            | Categories: #{post.categories.join(', ')}
+                        p
+                            | Keywords: #{post.keywords.join(', ')}
+                    a.post_read_more(href="#{post.path}")
+                            | Read more

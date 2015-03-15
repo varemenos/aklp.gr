@@ -13,18 +13,7 @@ var index = function (config) {
         fs.writeFileSync(path.resolve(config.pwd + config.dist + config.path.posts + '/index.html'), indexContent, 'utf8');
     };
 
-    var enroll = function (posts) {
-        var urls = [];
-
-        posts.forEach(function (post) {
-            var url = post.filename + '.html';
-            urls.push(url);
-        });
-
-        build(urls);
-    };
-
-    enroll(config.posts);
+    build(config.posts);
 };
 
 var exports = module.exports = index;

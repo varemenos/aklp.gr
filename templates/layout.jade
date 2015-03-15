@@ -9,8 +9,14 @@ html(lang="en")
     link(rel="apple-touch-icon", href="apple-touch-icon.png")
     title
         | #{title}
-    link(rel='stylesheet', href='/css/style.css')
+    link(rel='stylesheet', href='../assets/css/style.css')
+    <script src="//use.typekit.net/nge2vbr.js"></script>
+    <script>try{Typekit.load();}catch(e){}</script>
     body
-        block header
-        block content
-        block footer
+        .container
+            block header
+            block content
+            block footer
+                footer
+                    p.copyrights
+                        | copyright AKLP.gr &copy; #{new Date().getFullYear()}

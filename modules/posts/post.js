@@ -6,6 +6,7 @@ var marked = require('marked');
 var post = function (config) {
     'use strict';
 
+
     var build = function (post) {
         var postPath = path.resolve(config.pwd + config.dist + config.path.posts + post.filename + '.html');
         fs.writeFileSync(postPath, post.rendered, 'utf8');
