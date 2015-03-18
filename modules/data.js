@@ -75,6 +75,7 @@ var getContent = function (config) {
     config.posts.forEach(function (post) {
         var postContent = fs.readFileSync(config.pwd + config.path.posts + post.filename + post.extension, 'utf8');
         post.content = postContent;
+        post.rendered = marked(post.content.split('\n').splice(1).join('\n'));
     });
 
     console.log('    ✔ content loaded [ ' + config.posts.length + ' ]');
@@ -83,8 +84,10 @@ var getContent = function (config) {
 var getTitles = function (config) {
     'use strict';
 
+    var lexer = new marked.Lexer();
+
     config.posts.forEach(function (post) {
-        var tokens = marked.lexer(post.content);
+        var tokens = lexer.lex(post.content);
 
         tokens.forEach(function (token) {
             if (token.type === 'heading' && token.depth === 1) {
@@ -94,6 +97,34 @@ var getTitles = function (config) {
     });
 
     console.log('    ✔ titles loaded [ ' + config.posts.length + ' ]');
+};
+
+var getDescriptions = function (config) {
+    'use strict';
+
+    config.posts.forEach(function (post) {
+        if (!post.description) {
+            var lexer = new marked.Lexer();
+            var tokens = lexer.lex(post.content);
+            var description = [];
+            var counter = 0;
+
+            tokens.forEach(function (token) {
+                if (token.type === 'paragraph') {
+                    var words = token.text.split(' ');
+                    words.forEach(function (word) {
+                        console.log(counter++);
+                        if (description.length < 75) {
+                            description.push(word);
+                        }
+                    });
+                }
+            });
+            post.description = description.join(' ') + '...';
+        }
+    });
+
+    console.log('    ✔ descriptions loaded [ ' + config.posts.length + ' ]');
 };
 
 var getCategories = function (config) {
@@ -111,6 +142,19 @@ var getCategories = function (config) {
     console.log('    ✔ categories loaded [ ' + config.posts.length + ' ]');
 };
 
+var sortData = function (config) {
+    'use strict';
+
+    config.posts = _.sortBy(config.posts, function (post) {
+        var date = post.date;
+        var dateNumber = date.split('/').join('');
+
+        return -dateNumber;
+    });
+
+    console.log('    ✔ posts ordered by [date DESC] [ ' + config.posts.length + ' ]');
+};
+
 var data = function (config) {
     'use strict';
 
@@ -120,7 +164,9 @@ var data = function (config) {
     getMetadata(config);
     getContent(config);
     getTitles(config);
+    getDescriptions(config);
     getCategories(config);
+    sortData(config);
 };
 
 exports = module.exports = data;

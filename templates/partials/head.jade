@@ -1,0 +1,16 @@
+meta(charset="utf-8")
+meta(http-equiv="X-UA-Compatible", content="IE=edge")
+meta(name="description", content="#{description}")
+meta(name="keywords", content="#{keywords}")
+meta(name="author", content="#{author}")
+meta(name="viewport", content="width=device-width, initial-scale=1")
+link(rel="apple-touch-icon", href="apple-touch-icon.png")
+title
+    | #{title}
+    if post
+        if post.title
+            |  - #{post.title}
+link(rel='stylesheet', href='../assets/css/style.css')
+block css
+<script src="//use.typekit.net/xvl8boz.js"></script>
+<script>try{Typekit.load();}catch(e){}</script>

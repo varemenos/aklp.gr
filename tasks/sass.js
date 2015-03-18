@@ -6,7 +6,10 @@ module.exports = {
             style: 'compact'
         },
         files: {
-            'assets/css/style.css': 'assets/scss/style.scss'
+            'assets/css/style.css': 'assets/scss/style.scss',
+            'assets/css/libs.css': [
+                'assets/scss/prism.scss'
+            ]
         }
     }
 };

@@ -9,5 +9,11 @@ module.exports = function (grunt) {
 
     grunt.initConfig(tasks);
 
+    grunt.registerTask('build', [
+      'sass',
+      'autoprefixer',
+      'uglify',
+      'shell:generate'
+    ]);
     grunt.registerTask('default', ['watch']);
 };

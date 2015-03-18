@@ -1,40 +1,22 @@
 extends ../layout
-block header
-    header
-        h1#brand
-            a(href="http://aklp.gr/")
-                span.brand_title
-                    | AKLP.gr
-                img(src="http://aklp.gr/templates/aklpgr/assets/img/logo.jpg", alt="AKLP.gr")
-        nav
-            a(href="/")
-                | Home
-            a(href="/categories")
-                | Categories
-                //- each category in categories
-                //-     #{category}
-            a(href="/posts")
-                | Archive
 block content
-    .posts.index
-        each post in posts
-            article.post
-                img.post_image(src="#{post.image}")
-                section.post_content
-                    h2.post_title
-                        a(href="#{post.path}")
-                            | #{post.title}
-                    if post.description
-                        p
-                            | #{post.description}
+    each post in posts
+        article.post
+            h2.post_title
+                a(href="#{post.path}")
+                    | #{post.title}
+            .post_content
+                aside
+                    img.post_image(src="#{post.image}")
+                main
                     .post_metadata
+                        p.post_description
+                            | #{post.description}
                         p
                             | Author: #{post.author}
                         p
                             | Date: #{post.date}
                         p
                             | Categories: #{post.categories.join(', ')}
-                        p
-                            | Keywords: #{post.keywords.join(', ')}
                     a.post_read_more(href="#{post.path}")
                             | Read more

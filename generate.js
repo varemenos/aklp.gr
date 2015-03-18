@@ -2,15 +2,10 @@
 
 var fs = require('fs');
 var path = require('path');
-var marked = require('marked');
 
 var prepare = require('./modules/prepare');
 var data = require('./modules/data');
 var posts = require('./modules/posts');
-
-marked.setOptions({
-    renderer: new marked.Renderer()
-});
 
 var generate = function () {
     'use strict';

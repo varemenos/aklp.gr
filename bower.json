@@ -1,0 +1,12 @@
+{
+  "name": "aklpgr",
+  "version": "0.0.0",
+  "homepage": "http://aklp.gr",
+  "authors": [
+    "Adonis K. <aklp08@gmail.com>"
+  ],
+  "license": "MIT",
+  "devDependencies": {
+    "prism": "gh-pages"
+  }
+}

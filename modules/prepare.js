@@ -30,7 +30,19 @@ var prepare = function (config) {
             var dest = config.pwd + config.dist + '/assets/css';
             fse.copySync(src, dest);
 
-            console.log('    ✔ added stylesheet');
+            console.log('    ✔ added stylesheets');
+        } catch (e) {
+            throw e;
+        }
+    };
+
+    var addJS = function () {
+        try {
+            var src = config.pwd + '/assets/js';
+            var dest = config.pwd + config.dist + '/assets/js';
+            fse.copySync(src, dest);
+
+            console.log('    ✔ added scripts');
         } catch (e) {
             throw e;
         }
@@ -41,6 +53,7 @@ var prepare = function (config) {
         cleanDist();
         structureDist();
         addCSS();
+        addJS();
     }
 
     buildPath();

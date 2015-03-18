@@ -1,0 +1,172 @@
+html{
+    overflow-x: auto;
+    overflow-y: scroll;
+}
+
+body{
+    color: #595959;
+    background-color: #788;
+}
+
+a{
+    &,
+    &:visited{
+        text-decoration: none;
+        color: $color;
+    }
+
+    &:focus,
+    &:hover{
+        text-decoration: underline;
+    }
+}
+
+h3{
+    font-size: 1.56rem;
+}
+
+.container{
+    max-width: 1140px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: $normal 0;
+}
+
+.post{
+    padding: $normal;
+    background: $white;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.post_image {
+    height: 150px;
+    outline: 5px solid rgba(255, 255, 255 ,0.5);
+}
+
+.post_title{
+    margin-top: 0;
+    margin-bottom: $normal;
+    line-height: 3rem;
+    font-size: 2.5rem;
+
+    a{
+        display: inline-block;
+        color: #333;
+        text-decoration: none;
+
+        &:focus,
+        &:hover{
+            text-decoration: underline;
+        }
+    }
+}
+
+.post_content{
+    display: flex;
+    margin: 0;
+}
+
+aside{
+    max-width: 20%;
+}
+
+main {
+    flex: 1;
+    margin-left: $normal;
+
+    h2:first-child{
+        line-height: 1;
+    }
+
+    *:first-child{
+        margin-top: 0;
+    }
+}
+
+.post_metadata > p{
+    margin: 0;
+    line-height: 1.5;
+
+    &.post_description{
+        margin-bottom: $normal;
+    }
+}
+
+.post_read_more{
+    display: inline-block;
+    background: #788;
+    margin-top: $normal;
+    padding: 0.5rem 1rem;
+    color: $white;
+    border-radius: 3px;
+    text-decoration: none;
+
+    &,
+    &:visited{
+        color: $white;
+    }
+
+    &:focus,
+    &:hover{
+        text-decoration: none;
+    }
+}
+
+.post_description{
+    text-align: justify;
+}
+
+header{
+    display: flex;
+    margin: 0;
+    margin-bottom: $normal;
+
+    #brand{
+        margin: 0;
+        margin-right: $normal;
+
+        a{
+            display: block;
+            height: 4rem;
+
+            img{
+                height: 100%;
+                outline: 1px solid $white;
+            }
+        }
+    }
+
+    .brand_title{
+        display: none;
+    }
+
+    nav{
+        display: flex;
+        flex: 1;
+        align-items: center;
+        justify-content: flex-end;
+        text-align: right;
+        background-color: $white;
+
+        a{
+            display: inline-block;
+            margin-right: $normal;
+            color: #333;
+            text-decoration: none;
+
+            &:focus,
+            &:hover{
+                text-decoration: underline;
+            }
+        }
+    }
+}
+
+footer{
+    .copyrights{
+        margin-top: 0;
+        padding: 2em;
+        text-align: center;
+        background: $white;
+    }
+}

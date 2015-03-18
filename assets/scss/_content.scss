@@ -1,0 +1,37 @@
+hr{
+    border-top: 2px dashed rgba(black, 0.2);
+    border-bottom: 2px dashed rgba(black, 0.2);
+    border-left: none;
+    border-right: none;
+}
+
+blockquote{
+    margin: $normal 0;
+    border-left: $small solid darken($brightWhite, 5%);
+
+    & > * {
+        margin: $small 0;
+        padding: $small $normal;
+        background-color: $brightWhite;
+    }
+}
+
+code{
+    word-wrap: break-word;
+    background-color: rgba(black, 0.05);
+}
+
+code[class*="language-"],
+pre[class*="language-"]{
+    background-color: transparent;
+}
+
+:not(pre) > code[class*="language-"],
+pre[class*="language-"]{
+    box-sizing: border-box;
+    border: 1px solid darken($brightWhite, 5%);
+}
+
+#disqus_thread{
+    margin-top: 2rem;
+}
