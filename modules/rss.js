@@ -36,8 +36,9 @@ var populateFeed = function (config) {
 var writeFeed = function (config) {
     'use strict';
 
+    var path = path.resolve(config.pwd + config.dist + '/rss.xml');
     var xml = config.feed.xml({indent: true});
-    fs.writeFileSync(path.resolve(config.pwd + config.dist + '/rss.xml'), xml);
+    fs.writeFileSync(path, xml);
 };
 
 var rss = function (config) {
