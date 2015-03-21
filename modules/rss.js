@@ -1,10 +1,9 @@
 var path = require('path');
 var fs = require('fs');
+var Rss = require('rss');
 
 var makeFeed = function (config) {
     'use strict';
-
-    var Rss = require('rss');
 
     config.feed = new Rss({
         title: 'AKLP.gr blog posts',
