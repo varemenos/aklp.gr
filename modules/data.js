@@ -107,13 +107,11 @@ var getDescriptions = function (config) {
             var lexer = new marked.Lexer();
             var tokens = lexer.lex(post.content);
             var description = [];
-            var counter = 0;
 
             tokens.forEach(function (token) {
                 if (token.type === 'paragraph') {
                     var words = token.text.split(' ');
                     words.forEach(function (word) {
-                        console.log(counter++);
                         if (description.length < 75) {
                             description.push(word);
                         }
