@@ -21,6 +21,7 @@
     "fs-extra": "~0.16.5",
     "grunt-contrib-sass": "~0.9.2",
     "grunt-autoprefixer": "~2.2.0",
-    "grunt-contrib-uglify": "~0.1.1"
+    "grunt-contrib-uglify": "~0.1.1",
+    "rss": "~1.1.1"
   }
 }
