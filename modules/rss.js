@@ -48,4 +48,4 @@ var rss = function (config) {
     writeFeed(config);
 };
 
-exports = module.exports = rss;
+var exports = module.exports = rss;

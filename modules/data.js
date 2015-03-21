@@ -167,4 +167,4 @@ var data = function (config) {
     sortData(config);
 };
 
-exports = module.exports = data;
+var exports = module.exports = data;

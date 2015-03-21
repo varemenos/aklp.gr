@@ -48,12 +48,25 @@ var prepare = function (config) {
         }
     };
 
+    var addFonts = function () {
+        try {
+            var src = config.pwd + '/assets/fonts';
+            var dest = config.pwd + config.dist + '/assets/fonts';
+            fse.copySync(src, dest);
+
+            console.log('    ✔ added scripts');
+        } catch (e) {
+            throw e;
+        }
+    };
+
     function buildPath () {
         console.log('  cleaning up dist...');
         cleanDist();
         structureDist();
         addCSS();
         addJS();
+        addFonts();
     }
 
     buildPath();
