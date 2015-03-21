@@ -1,4 +1,12 @@
 @import "_normalize";
 @import "_variables";
+@import "_icons";
 @import "_content";
 @import "_base";
+
+[class^="icon-"],
+[class*=" icon-"] {
+    display: inline-block;
+    margin-right: 0.5rem;
+    text-decoration: none;
+}
